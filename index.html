@@ -80,7 +80,7 @@
                 if (file.type === 'file' && file.name.endsWith('.html') && file.name !== 'index.html') {
                     const li = document.createElement('li');
                     const a = document.createElement('a');
-                    a.href = file.name;
+                    a.href = `#${file.name}`;
                     a.textContent = file.name;
                     li.appendChild(a);
                     fileList.appendChild(li);
@@ -88,9 +88,25 @@
             });
         }
 
-        fetchFiles().catch(error => {
-            console.error('Error fetching files:', error);
+        async function loadFile(fileName) {
+            const response = await fetch(fileName);
+            const content = await response.text();
+            document.body.innerHTML = content;
+        }
+
+        window.addEventListener('hashchange', () => {
+            const fileName = window.location.hash.slice(1);
+            if (fileName) {
+                loadFile(fileName);
+            }
         });
+
+        const fileName = window.location.hash.slice(1);
+        if (fileName) {
+            loadFile(fileName);
+        } else {
+            fetchFiles();
+        }
     </script>
 </body>
 </html>
