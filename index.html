@@ -77,7 +77,7 @@
             const fileList = document.getElementById('file-list');
 
             data.forEach(file => {
-                if (file.type === 'file' && file.name.endsWith('.html') && file.name !== 'index.html') {
+                if (file.type === 'file' && file.name.endsWith('.html') && file.name !== 'index.html' && file.name !== '404.html') {
                     const li = document.createElement('li');
                     const a = document.createElement('a');
                     a.href = `#${file.name}`;
