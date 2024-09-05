@@ -19,7 +19,6 @@ The comparisons are created using [diffoscope](https://diffoscope.org/), a tool 
    ```bash
    diffoscope --html=diff_v2021.6.30_to_v2022.7.12.html path_to_v2021 path_to_v2022
    ```
-3. Upload the resulting HTML file to this repository.
 
 ## Contribution
 
