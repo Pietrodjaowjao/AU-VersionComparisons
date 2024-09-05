@@ -13,9 +13,17 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Setup GitHub Pages
+    - name: Create deployment directory
+      run: |
+        mkdir -p deployment
+        # Copy index.html to deployment directory
+        cp index.html deployment/
+        # Copy all HTML files to deployment directory
+        cp *.html deployment/
+
+    - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./
+        publish_dir: ./deployment
         publish_branch: gh-pages
