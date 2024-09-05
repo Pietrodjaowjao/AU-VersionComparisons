@@ -7,10 +7,24 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
         h1 {
             color: #333;
+            border-bottom: 2px solid #1a73e8;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
         }
         ul {
             list-style-type: none;
@@ -18,24 +32,37 @@
         }
         li {
             margin: 10px 0;
+            font-size: 18px;
         }
         a {
             text-decoration: none;
             color: #1a73e8;
+            transition: color 0.3s;
         }
         a:hover {
+            color: #d93025;
             text-decoration: underline;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
         }
     </style>
 </head>
 <body>
-    <h1>Among Us Version Comparisons</h1>
-    <ul id="file-list"></ul>
+    <div class="container">
+        <h1>Among Us Version Comparisons</h1>
+        <ul id="file-list"></ul>
+        <div class="footer">
+            <p>Powered by <a href="https://github.com">GitHub API</a></p>
+        </div>
+    </div>
 
     <script>
-        const username = 'Pietrodjaowjao';
-        const repo = 'AU-VersionComparisons';
-        const branch = 'main';
+        const username = 'Pietrodjaowjao'; // Replace with your GitHub username
+        const repo = 'AU-VersionComparisons'; // Replace with your repository name
+        const branch = 'main'; // Replace with your default branch name
 
         async function fetchFiles() {
             const url = `https://api.github.com/repos/${username}/${repo}/contents/?ref=${branch}`;
@@ -44,7 +71,7 @@
             const fileList = document.getElementById('file-list');
 
             data.forEach(file => {
-                if (file.type === 'file' && file.name.endsWith('.html')) {
+                if (file.type === 'file' && file.name.endsWith('.html') && file.name !== 'index.html') {
                     const li = document.createElement('li');
                     const a = document.createElement('a');
                     a.href = file.name;
