@@ -54,12 +54,20 @@
             font-size: 14px;
             color: #666;
         }
+        #file-content {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Among Us Version Comparisons</h1>
         <ul id="file-list"></ul>
+        <div id="file-content"></div>
         <div class="footer">
             <p>Powered by <a href="https://github.com">GitHub API</a> and <a href="https://diffoscope.org/">Diffoscope</a></p>
         </div>
@@ -91,7 +99,8 @@
         async function loadFile(fileName) {
             const response = await fetch(fileName);
             const content = await response.text();
-            document.body.innerHTML = content;
+            const fileContentDiv = document.getElementById('file-content');
+            fileContentDiv.innerHTML = content;
         }
 
         window.addEventListener('hashchange', () => {
