@@ -1,67 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Among Us Version Comparisons</title>
 
     <meta property="og:title" content="Among Us Version Comparisons">
-    <meta property="og:description" content="Explore the detailed comparisons of different Among Us versions. Powered by Diffoscope.">
+    <meta property="og:description"
+        content="Explore the detailed comparisons of different Among Us versions. Powered by Diffoscope.">
     <meta property="og:url" content="https://pietrodjaowjao.github.io/AU-VersionComparisons/">
     <meta property="og:type" content="website">
-    
+
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
+            background-color: #2c2f33;
+            color: #dcddde;
         }
+
         .container {
             max-width: 800px;
-            margin: 0 auto;
+            margin: 40px auto;
             padding: 20px;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            background: #36393f;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
+
         h1 {
-            color: #333;
-            border-bottom: 2px solid #1a73e8;
+            color: #fff;
+            border-bottom: 2px solid #7289da;
             padding-bottom: 10px;
             margin-bottom: 20px;
         }
+
         ul {
             list-style-type: none;
             padding: 0;
         }
+
         li {
             margin: 10px 0;
             font-size: 18px;
+            background-color: #424549;
+            padding: 10px;
+            border-radius: 6px;
+            transition: background-color 0.3s;
         }
+
+        li:hover {
+            background-color: #7289da;
+        }
+
         a {
             text-decoration: none;
-            color: #1a73e8;
+            color: #dcddde;
+            font-weight: bold;
             transition: color 0.3s;
         }
+
         a:hover {
-            color: #d93025;
-            text-decoration: underline;
+            color: #fff;
         }
+
         .footer {
             margin-top: 20px;
             font-size: 14px;
-            color: #666;
+            color: #b9bbbe;
+            text-align: center;
+        }
+
+        .footer a {
+            color: #7289da;
+        }
+
+        .footer a:hover {
+            color: #fff;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1>Among Us Version Comparisons</h1>
         <ul id="file-list"></ul>
         <div class="footer">
-            <p>Powered by <a href="https://github.com">GitHub API</a> and <a href="https://diffoscope.org/">Diffoscope</a></p>
+            <p>Powered by <a href="https://github.com">GitHub API</a> and <a
+                    href="https://diffoscope.org/">Diffoscope</a></p>
         </div>
     </div>
 
@@ -69,6 +97,13 @@
         const username = 'Pietrodjaowjao';
         const repo = 'AU-VersionComparisons';
         const branch = 'main';
+
+        function formatFilename(filename) {
+            const cleanName = filename.replace('diff_v', '').replace('.html', '');
+            const versions = cleanName.split('_to_');
+            versions[1] = versions[1].slice(1);
+            return `${versions[0]} to ${versions[1]}`;
+        }
 
         async function fetchFiles() {
             const url = `https://api.github.com/repos/${username}/${repo}/contents/?ref=${branch}`;
@@ -81,7 +116,7 @@
                     const li = document.createElement('li');
                     const a = document.createElement('a');
                     a.href = file.name;
-                    a.textContent = file.name;
+                    a.textContent = formatFilename(file.name);
                     li.appendChild(a);
                     fileList.appendChild(li);
                 }
@@ -93,4 +128,5 @@
         });
     </script>
 </body>
+
 </html>
