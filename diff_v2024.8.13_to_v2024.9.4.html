@@ -9,69 +9,84 @@
   <title>/srv/diffoscope/bin/diffoscope --status-fd=2 --html output.html --text output.txt --profile=- a/Assembly-CSharp-813.zip b/Assembly-CSharp-94.zip</title>
 <style>
 body.diffoscope {
-  background: white;
-  color: black;
+  background-color: #f6f8fa;
+  color: #24292e;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
 }
 .diffoscope .footer {
-  font-size: small;
+  font-size: 12px;
+  color: #586069;
 }
 .diffoscope .difference {
-  border: outset #888 1px;
-  background: #E8E8E8;
-  background: rgba(0,0,0,.1);
-  padding: 0.5em;
-  margin: 0.5em 0;
+  border: 1px solid #e1e4e8;
+  background-color: #f1f8ff;
+  padding: 16px;
+  margin: 8px 0;
+  border-radius: 6px;
 }
 .diffoscope .difference table {
   table-layout: fixed;
   width: 100%;
-  border: 0;
+  border: 1px solid #e1e4e8;
+  border-radius: 6px;
 }
 .diffoscope .difference th,
 .diffoscope .difference td {
   border: 0;
+  padding: 6px;
 }
 .diffoscope table.diff {
-  border: 0;
-  border-collapse:collapse;
-  font-size:0.75em;
-  font-family: 'Lucida Console', monospace;
+  border-collapse: separate;
+  font-size: 12px;
+  font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
   word-break: break-word;
+  background-color: #fff;
 }
 .diffoscope table.diff tr:hover td {
-  background: #FFFF00;
+  background-color: #fffbdd;
 }
 .diffoscope .line {
-  color:#8080a0
+  color: #959da5;
 }
 .diffoscope th {
-  background: black;
-  color: white
+  background-color: #24292e;
+  color: #ffffff;
+  padding: 8px;
 }
 .diffoscope .diffunmodified td {
-  background: #D0D0E0
+  background-color: #f6f8fa;
 }
 .diffoscope .diffhunk td {
-  background: #A0A0A0
+  background-color: #e1e4e8;
 }
 .diffoscope .diffadded td {
-  background: #CCFFCC
+  background-color: #e6ffed;
+  color: #22863a;
 }
 .diffoscope .diffdeleted td {
-  background: #FFCCCC
+  background-color: #ffeef0;
+  color: #cb2431;
 }
 .diffoscope .diffchanged td {
-  background: #FFFFA0
+  background-color: #fff5b1;
+  color: #b08800;
 }
-.diffoscope ins, del {
-  background: #E0C880;
-  text-decoration: none
+.diffoscope ins {
+  background-color: #e6ffed;
+  color: #22863a;
+  text-decoration: none;
+}
+.diffoscope del {
+  background-color: #ffeef0;
+  color: #cb2431;
+  text-decoration: none;
 }
 .diffoscope .dp {
-  color: #B08080
+  color: #b31d28;
 }
 .diffoscope .comment {
   font-style: italic;
+  color: #6a737d;
 }
 .diffoscope .comment.multiline {
   font-style: normal;
@@ -80,45 +95,50 @@ body.diffoscope {
 }
 .diffoscope .source {
   font-weight: bold;
+  color: #005cc5;
 }
 .diffoscope .error {
-  border: solid black 1px;
-  background: red;
-  color: white;
-  padding: 0.2em;
+  border: solid 1px #e5534b;
+  background-color: #ffeef0;
+  color: #d73a49;
+  padding: 6px;
+  border-radius: 6px;
 }
 .diffoscope .anchor {
   margin-left: 0.5em;
   font-size: 80%;
-  color: #333;
+  color: #586069;
   text-decoration: none;
-  display: none;
 }
 .diffoscope .diffheader:hover .anchor {
-  display: inline;
+  color: #0366d6;
 }
 .diffoscope .diffcontrol, .diffoscope .diffcontrol-nochildren {
   float: left;
   margin-right: 0.3em;
   cursor: pointer;
-  display: none; /* currently, only available in html-dir output where jquery is enabled */
+  display: none; /* Keep hidden for now */
 }
 .diffoscope .colines {
-  width: 3em;
+  width: 50px;
+  padding-right: 10px;
+  color: #959da5;
 }
 .diffoscope .coldiff {
-  width: 99%;
+  width: calc(100% - 50px);
 }
 .diffoscope .diffsize {
   float: right;
+  font-size: 12px;
+  color: #586069;
 }
 .diffoscope table.diff tr.ondemand td, .diffoscope div.ondemand-details {
-  background: #f99;
+  background-color: #fffbdd;
   text-align: center;
-  padding: 0.5em 0;
+  padding: 8px 0;
 }
 .diffoscope table.diff tr.ondemand:hover td, .diffoscope div.ondemand-details:hover {
-  background: #faa;
+  background-color: #fff5b1;
   cursor: pointer;
 }
 </style>
